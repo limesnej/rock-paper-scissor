@@ -1,4 +1,4 @@
-let arr = ["scissor", "rock", "paper"];
+let arr = ["Scissor", "Rock", "Paper"];
 
 
 function getComputerChoice() {
@@ -9,4 +9,85 @@ function getComputerChoice() {
     return arr[Math.floor((Math.random() * arr.length))]
 }
 
-console.log(getComputerChoice())
+
+
+function playRound(playerSelection, computerSelection){
+    // make rules of rock paper scissors here
+    let statement = "";
+    if (playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "scissor")
+    {
+        statement = "win";
+    }
+    else if (playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "paper"){
+        statement = "loss";
+    }
+    else if (playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "rock")
+    {
+        statement = "tie";
+    }
+    else if (playerSelection.toLowerCase() === "scissor" && computerSelection.toLowerCase() === "scissor")
+    {
+        statement = "tie";
+    }
+    else if (playerSelection.toLowerCase() === "scissor" && computerSelection.toLowerCase() === "paper"){
+        statement = "win";
+    }
+    else if (playerSelection.toLowerCase() === "scissor" && computerSelection.toLowerCase() === "rock")
+    {
+        statement = "loss";
+    }
+    else if (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "scissor")
+    {
+        statement = "win";
+    }
+    else if (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "paper"){
+        statement = "tie";
+    }
+    else if (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "rock")
+    {
+        statement = "loss";
+    }
+    
+    return statement;
+}
+
+let i= 0;
+let y = 0;
+
+function game(){
+    while (i < 3 && y < 3)
+    {
+        let playerSelection = prompt("what?");
+        let computerSelection = getComputerChoice();
+        if (playRound(playerSelection, computerSelection) === "win")
+        {
+            i++;
+            console.log("human won!");
+            console.log("The value of i is: " + i);
+        }
+        else if (playRound(playerSelection, computerSelection) === "tie")
+        {
+            console.log("tie");
+            console.log("The value of y is: " + y);
+            console.log("The value of i is: " + i);
+
+        }
+        else if (playRound(playerSelection, computerSelection) === "loss") {
+            y++;
+            console.log("computer won!");
+            console.log("The value of y is: " + y);
+            console.log("The value of i is: " + i);
+
+        }
+    
+    }
+    if (i === 3){
+        console.log("the human won!");
+    }
+    else {
+        console.log("the computer won!");
+    }
+    
+}
+
+game();
