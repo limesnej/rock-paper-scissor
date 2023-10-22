@@ -1,5 +1,11 @@
 let arr = ["Scissor", "Rock", "Paper"];
 
+let buttonRock = document.querySelector('#rock');
+let buttonScissor = document.querySelector('#scissor');
+let buttonPaper = document.querySelector('#paper');
+
+
+
 
 function getComputerChoice() {
     // should return rock, paper or scissor
@@ -54,8 +60,23 @@ function playRound(playerSelection, computerSelection){
 let i= 0;
 let y = 0;
 
+
 function game(){
-        let playerSelection = prompt("what?");
+    while (i < 3 && y < 3)
+    {   let playerSelection = "";
+        
+        buttonRock.addEventListener('click', () => {
+            playerSelection = "rock";
+        })
+
+        buttonPaper.addEventListener('click', () => {
+            playerSelection = "paper";
+        })
+
+        buttonScissor.addEventListener('click', () =>
+        {
+            playerSelection = "scissor";
+        })
         let computerSelection = getComputerChoice();
         if (playRound(playerSelection, computerSelection) === "win")
         {
@@ -78,8 +99,13 @@ function game(){
 
         }
     
-    
-    
+    }
+    if (i === 3){
+        console.log("the human won!");
+    }
+    else {
+        console.log("the computer won!");
+    }
     
 }
 
