@@ -17,6 +17,8 @@ function getComputerChoice() {
 
 
 
+
+
 function playRound(playerSelection, computerSelection){
     // make rules of rock paper scissors here
     let statement = "";
@@ -62,21 +64,11 @@ let y = 0;
 
 
 function game(){
-    while (i < 3 && y < 3)
-    {   let playerSelection = "";
+    while(i < 3 && y < 3)
+    {
         
-        buttonRock.addEventListener('click', () => {
-            playerSelection = "rock";
-        })
-
-        buttonPaper.addEventListener('click', () => {
-            playerSelection = "paper";
-        })
-
-        buttonScissor.addEventListener('click', () =>
-        {
-            playerSelection = "scissor";
-        })
+        let playerSelection = getPlayerChoice();
+        // let playerSelection = prompt("what?");
         let computerSelection = getComputerChoice();
         if (playRound(playerSelection, computerSelection) === "win")
         {
@@ -100,13 +92,5 @@ function game(){
         }
     
     }
-    if (i === 3){
-        console.log("the human won!");
-    }
-    else {
-        console.log("the computer won!");
-    }
-    
 }
-
-game();
+document.addEventListener("DOMContentLoaded", game());
