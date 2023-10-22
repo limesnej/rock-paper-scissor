@@ -55,8 +55,6 @@ let i= 0;
 let y = 0;
 
 function game(){
-    while (i < 3 && y < 3)
-    {
         let playerSelection = prompt("what?");
         let computerSelection = getComputerChoice();
         if (playRound(playerSelection, computerSelection) === "win")
@@ -80,13 +78,8 @@ function game(){
 
         }
     
-    }
-    if (i === 3){
-        console.log("the human won!");
-    }
-    else {
-        console.log("the computer won!");
-    }
+    
+    
     
 }
 
