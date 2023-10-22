@@ -1,6 +1,9 @@
 let arr = ["Scissor", "Rock", "Paper"];
 
-let buttonRock = document.querySelector('#rock');
+// let buttonRock = document.querySelector('#rock').addEventListener("click", () =>
+// {
+//     console.log("roooooooock");
+// });
 let buttonScissor = document.querySelector('#scissor');
 let buttonPaper = document.querySelector('#paper');
 
@@ -15,7 +18,11 @@ function getComputerChoice() {
     return arr[Math.floor((Math.random() * arr.length))]
 }
 
+function getPlayerChoice() {
 
+    
+    
+}
 
 
 
@@ -64,10 +71,14 @@ let y = 0;
 
 
 function game(){
-    while(i < 3 && y < 3)
-    {
-        
-        let playerSelection = getPlayerChoice();
+    
+        let playerSelection ="";
+        document.querySelector('#rock').addEventListener("click", () =>
+        {
+            playerSelection = "rock";
+            console.log(playerSelection);
+        });
+
         // let playerSelection = prompt("what?");
         let computerSelection = getComputerChoice();
         if (playRound(playerSelection, computerSelection) === "win")
@@ -92,5 +103,5 @@ function game(){
         }
     
     }
-}
+
 document.addEventListener("DOMContentLoaded", game());
