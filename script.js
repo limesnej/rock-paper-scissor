@@ -1,14 +1,7 @@
 let arr = ["Scissor", "Rock", "Paper"];
 
-// let buttonRock = document.querySelector('#rock').addEventListener("click", () =>
-// {
-//     console.log("roooooooock");
-// });
-let buttonScissor = document.querySelector('#scissor');
-let buttonPaper = document.querySelector('#paper');
 
-
-
+let btnRock = document.querySelector("#rock");
 
 function getComputerChoice() {
     // should return rock, paper or scissor
@@ -18,11 +11,7 @@ function getComputerChoice() {
     return arr[Math.floor((Math.random() * arr.length))]
 }
 
-function getPlayerChoice() {
 
-    
-    
-}
 
 
 
@@ -70,22 +59,23 @@ let i= 0;
 let y = 0;
 
 
-function game(){
-    
-        let playerSelection ="";
-        document.querySelector('#rock').addEventListener("click", () =>
-        {
-            playerSelection = "rock";
-            console.log(playerSelection);
-        });
-
-        // let playerSelection = prompt("what?");
+const btns = document.querySelectorAll("button");
+Array.from(btns).forEach(function(btn) {
+    btn.addEventListener("click", function(){
+        let playerSelection = this.value;
         let computerSelection = getComputerChoice();
+        
         if (playRound(playerSelection, computerSelection) === "win")
         {
             i++;
             console.log("human won!");
             console.log("The value of i is: " + i);
+            if (i === 3)
+            {
+                console.log("HUMAN WON!");
+                i = 0;
+                y = 0;
+            }
         }
         else if (playRound(playerSelection, computerSelection) === "tie")
         {
@@ -99,9 +89,15 @@ function game(){
             console.log("computer won!");
             console.log("The value of y is: " + y);
             console.log("The value of i is: " + i);
+            if (y === 3)
+            {
+                console.log("COMPUTER WON!");
+                y = 0;
+                i = 0;
+            }
 
         }
+        
+    });
     
-    }
-
-document.addEventListener("DOMContentLoaded", game());
+});
