@@ -42,14 +42,14 @@ function playRound(playerSelection, computerSelection){
     }
     else if (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "scissor")
     {
-        statement = "win";
+        statement = "loss";
     }
     else if (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "paper"){
         statement = "tie";
     }
     else if (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "rock")
     {
-        statement = "loss";
+        statement = "win";
     }
     
     return statement;
@@ -70,9 +70,9 @@ myResults.appendChild(compChoice);
 myResults.appendChild(para);
 myResults.appendChild(paraWinner);
 
-
-document.querySelector("#compChoice").innerHTML = "Computer chose: "
-
+function dispComp(value1, value2){
+    document.querySelector("#compChoice").innerHTML = "Computer chose: " + value1 + ". " + "Human Chose: " + value2;
+}
 
 function changeText(value1, value2)
 {
@@ -88,12 +88,15 @@ const btns = document.querySelectorAll("button");
 Array.from(btns).forEach(function(btn) {
     btn.addEventListener("click", function(){
         let playerSelection = this.value;
+        console.log(playerSelection);
         let computerSelection = getComputerChoice();
+        console.log(computerSelection);
         
         
         if (playRound(playerSelection, computerSelection) === "win")
         {
             i++;
+            dispComp(computerSelection, playerSelection);
             changeText(i,y);
             if (i === 3)
             {
@@ -104,17 +107,13 @@ Array.from(btns).forEach(function(btn) {
         }
         else if (playRound(playerSelection, computerSelection) === "tie")
         {
-            console.log("tie");
-            console.log("The value of y is: " + y);
-            console.log("The value of i is: " + i);
+            dispComp(computerSelection, playerSelection);
 
         }
         else if (playRound(playerSelection, computerSelection) === "loss") {
             y++;
+            dispComp(computerSelection, playerSelection);
             changeText(i,y);
-            console.log("computer won!");
-            console.log("The value of y is: " + y);
-            console.log("The value of i is: " + i);
             if (y === 3)
             {
                 winnerText("Computer won! congrats");
